@@ -14,3 +14,4 @@ function dayOfWeek(number) {
     console.log(days[number - 1]);
   }
 }
+dayOfWeek(0);
