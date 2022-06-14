@@ -31,7 +31,7 @@ Write a function that calculates and print the value of a number raised to a giv
 
 ### :black_medium_small_square: Repeat String
 Write a function that receives a string and a repeat count n. The function should return a new string (the old one repeated n times).
-[ Lab - Functions/formatGrade.js]https://github.com/MirelaKostova/Programming-Fundamentals-with-JavaScript-SoftUni/blob/main/Functions%20-%20Lab/mathPower.js
+[ Lab - Functions/formatGrade.js] (https://github.com/MirelaKostova/Programming-Fundamentals-with-JavaScript-SoftUni/blob/main/Functions%20-%20Lab/mathPower.js)
 
 ### :black_medium_small_square: Orders
 Write a function that calculates the total price of an order and prints it on the console. 
