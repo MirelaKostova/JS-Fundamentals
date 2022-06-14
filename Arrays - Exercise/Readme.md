@@ -52,6 +52,8 @@ Write a function that receives an array and the number of rotations you have to 
 Write a function to find all the top integers in an array. A top integer is an integer, which is bigger than all the elements to its right.
 Print all top integers on the console, separated by a single space.
 
+[- [ Arrays - Exercise/maxNumber.js](https://github.com/MirelaKostova/Programming-Fundamentals-with-JavaScript-SoftUni/blob/main/Arrays%20-%20Exercise/maxNumber.js)
+
 ### :black_medium_small_square: Equal Sums
 
 Write a function that determines if there exists an element in the array of numbers such that the sum of the elements on its left is equal to the sum of the elements on its right.
@@ -60,15 +62,22 @@ If there are NO elements to the left/right, their sum is 0.
 
 Print the index that satisfies the required condition or "no" if there is no such index.
 
+[- [ Arrays - Exercise/equalSums.js](https://github.com/MirelaKostova/Programming-Fundamentals-with-JavaScript-SoftUni/blob/main/Arrays%20-%20Exercise/equalSums.js)
+
+
 ### :black_medium_small_square: Max Sequence of Equal Elements
 
 Write a function that finds the longest sequence of equal elements in an array of numbers.
 
 If several longest sequences exist, print the leftmost one.
 
+[- [ Arrays - Exercise/maxSequenceOfEqualElement.js](https://github.com/MirelaKostova/Programming-Fundamentals-with-JavaScript-SoftUni/blob/main/Arrays%20-%20Exercise/maxSequenceOfEqualElement.js)
+
 ### :black_medium_small_square: Magic Sum
 
 Write a function, which prints all unique pairs in an array of integers whose sum is equal to a given number.
+
+[- [ Arrays - Exercise/magicSum.js](https://github.com/MirelaKostova/Programming-Fundamentals-with-JavaScript-SoftUni/blob/main/Arrays%20-%20Exercise/magicSum.js)
 
 ### :black_medium_small_square: Dungeonest Dark * 
 
