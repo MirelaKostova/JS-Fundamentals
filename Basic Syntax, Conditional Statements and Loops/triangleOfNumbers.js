@@ -7,3 +7,5 @@ function triangleOfNumbers(n) {
     console.log(printLine);
   }
 }
+
+triangleOfNumbers(3);
