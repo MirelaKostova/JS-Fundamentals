@@ -23,3 +23,5 @@ function logIn(input) {
     console.log(`User ${username} logged in.`);
   }
 }
+
+logIn(["Acer", "login", "go", "let me in", "recA"]);
