@@ -3,3 +3,5 @@ function multiplicationTable(num) {
     console.log(`${num} X ${times} = ${num * times}`);
   }
 }
+
+multiplicationTable(5);
