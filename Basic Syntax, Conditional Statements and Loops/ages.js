@@ -13,3 +13,5 @@ function ages(age) {
     console.log("elder");
   }
 }
+
+ages(20);
