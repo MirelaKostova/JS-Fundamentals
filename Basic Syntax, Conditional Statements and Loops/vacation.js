@@ -44,3 +44,5 @@ function vacation(count, type, day) {
 
   console.log(`Total price: ${totalPrice.toFixed(2)}`);
 }
+
+vacation(30, "Students", "Sunday");
