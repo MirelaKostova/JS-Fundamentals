@@ -5,3 +5,5 @@ function rounding(number, precision) {
   let roundedNum = number.toFixed(precision);
   console.log(parseFloat(roundedNum));
 }
+
+rounding(3.1415926535897932384626433832795, 2);
