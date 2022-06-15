@@ -25,3 +25,5 @@ function division(num) {
     console.log("Not divisible");
   }
 }
+
+division();
