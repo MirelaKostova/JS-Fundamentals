@@ -26,4 +26,4 @@ function division(num) {
   }
 }
 
-division();
+division(30);
