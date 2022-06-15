@@ -8,3 +8,5 @@ function printAndSum(startNum, endNum) {
   console.log(printLine);
   console.log(`Sum: ${sum}`);
 }
+
+printAndSum(5, 10);
