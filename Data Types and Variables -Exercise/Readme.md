@@ -25,9 +25,11 @@ https://github.com/MirelaKostova/Programming-Fundamentals-with-JavaScript-SoftUn
 
 ### :black_medium_small_square:	Reversed Chars
 Write a program that takes 3 parameters (characters) and prints them in reversed order with a space between them.
+https://github.com/MirelaKostova/Programming-Fundamentals-with-JavaScript-SoftUni/blob/main/Data%20Types%20and%20Variables%20-Exercise/reversedChars.js
 
 ### :black_medium_small_square:	Lower or Upper
 Write a function that prints whether a given character is upper-case or lower-case.
+https://github.com/MirelaKostova/Programming-Fundamentals-with-JavaScript-SoftUni/blob/main/Data%20Types%20and%20Variables%20-Exercise/lowerOrUpper.js
 
 ### :black_medium_small_square:	*Calculator
 Write a function that receives 3 parameters: a number, an operator (string), and another number.
