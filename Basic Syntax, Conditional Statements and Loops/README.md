@@ -16,7 +16,10 @@ The output should be printed to the console.
 
 Examples:
 | Input | Output |
-| 20 | adult |
+|-------|--------|
+| 20    | adult  |
+
+https://github.com/MirelaKostova/Programming-Fundamentals-with-JavaScript-SoftUni/blob/main/Basic%20Syntax%2C%20Conditional%20Statements%20and%20Loops/ages.js
 
 ### :black_medium_small_square: Rounding
 
@@ -24,6 +27,8 @@ Write a JS function that rounds numbers to a specific precision.
 The input comes as two numbers. The first value is the number to be rounded and the second is the precision (significant decimal places). If the passed precision is more than 15, it should automatically be reduced to 15.
 Remove trailing zeroes, if any (you can use parseFloat (number))
 Do not print insignificant decimals.
+
+https://github.com/MirelaKostova/Programming-Fundamentals-with-JavaScript-SoftUni/blob/main/Basic%20Syntax%2C%20Conditional%20Statements%20and%20Loops/rounding.js
 
 ### :black_medium_small_square: Division
 
@@ -33,9 +38,12 @@ If the number is not divisible by any of the given numbers print: "Not divisible
 
 Examples:
 | Input | Output |
+| ------|--------|
 | 30 | The number is divisible by 10 |
 | 15 | The number is divisible by 3 |
 | 1643| Not divisible |
+
+https://github.com/MirelaKostova/Programming-Fundamentals-with-JavaScript-SoftUni/blob/main/Basic%20Syntax%2C%20Conditional%20Statements%20and%20Loops/division.js
 
 ### :black_medium_small_square: Vacation
 
@@ -43,6 +51,7 @@ You are given a group of people, the type of the group, and the day of the week 
 The output should look like that: `Total price: {price}`.The price should be formatted to the second decimal point.
 
 |Friday|Saturday|Sunday|
+|------|--------|------|
 |Students| 8.45| 9.80| 10.46|
 |Business| 10.90| 15.60| 16|
 |Regular| 15| 20| 22.50|
@@ -55,8 +64,11 @@ There are also discounts based on some conditions:
 
 Examples:
 | Input | Output |
+|-------|-------|
 | 30, "Students", "Sunday" | Total price: 266.73 |
 | 40, "Regular", "Saturday" | Total price: 800.00 |
+
+https://github.com/MirelaKostova/Programming-Fundamentals-with-JavaScript-SoftUni/blob/main/Basic%20Syntax%2C%20Conditional%20Statements%20and%20Loops/vacation.js
 
 ### :black_medium_small_square: Leap Year
 
@@ -66,8 +78,11 @@ Write a JS function to check whether a year is a leap. Leap years are either div
 
 Examples:
 | Input | Output |
+|------|--------|
 | 1984 | yes |
 | 2003 | no |
+
+https://github.com/MirelaKostova/Programming-Fundamentals-with-JavaScript-SoftUni/blob/main/Basic%20Syntax%2C%20Conditional%20Statements%20and%20Loops/leapYear.js
 
 ### :black_medium_small_square: Print and Sum
 
@@ -75,64 +90,55 @@ Write a function that displays numbers from given start to given end and their s
 
 Examples:
 | Input | Output |
+|-------|--------|
 | 5, 10 5 6 7 8 9 10 | Sum: 351 |
 | 50, 60 50 51 52 53 54 55 56 57 58 59 60 | Sum: 605 |
+
+https://github.com/MirelaKostova/Programming-Fundamentals-with-JavaScript-SoftUni/blob/main/Basic%20Syntax%2C%20Conditional%20Statements%20and%20Loops/printAndSum.js
 
 ### :black_medium_small_square: Triangle of Numbers
 
 Write a function, which receives a single number – n, and prints a triangle from 1 to n as in the examples.
-Constraints
-• n will be in the interval [1...20].
 
 Examples:
-Input: 6
-Output:
-1
-2 2
-3 3 3
-4 4 4 4
-5 5 5 5 5
-6 6 6 6 6 6
+| Input | Output |
+|-6 | 1 |
+|   | 2 2|
+|   | 3 3 3 |
+|   | 4 4 4 4 |
+|   | 5 5 5 5 5 |
+|   | 6 6 6 6 6 6 |
+
+https://github.com/MirelaKostova/Programming-Fundamentals-with-JavaScript-SoftUni/blob/main/Basic%20Syntax%2C%20Conditional%20Statements%20and%20Loops/triangleOfNumbers.js
 
 ### :black_medium_small_square: Multiplication Table
 
-You will receive a number as a parameter. Print the 10 times table for this number. See the examples below for more information.
-Output
+You will receive a number as a parameter. Print the 10 times table for this number.
 Print every row of the table in the following format:
 {number} X {times} = {product}
-Constraints
-• The number will be an integer will be in the interval [1…100]
 
-Examples:
-Input: 5
-Output:
-5 X 1 = 5
-5 X 2 = 10
-5 X 3 = 15
-5 X 4 = 20
-5 X 5 = 25
-5 X 6 = 30
-5 X 7 = 35
-5 X 8 = 40
-5 X 9 = 45
-5 X 10 = 50
+https://github.com/MirelaKostova/Programming-Fundamentals-with-JavaScript-SoftUni/blob/main/Basic%20Syntax%2C%20Conditional%20Statements%20and%20Loops/multiplicationTable.js
 
 ### :black_medium_small_square: \* Login
 
 You will be given a string representing a username. The correct password will be that username reversed. Until you receive the correct password print on the console: "Incorrect password. Try again.". When you receive the correct password print: "User {username} logged in."
 However, on the fourth try if the password is still not correct print: "User {username} blocked!" and end the program.
 The input comes as an array of strings - the first string represents username and each subsequent string is a password.
-Examples
-Input Output
-['Acer','login','go','let me in','recA'] Incorrect password. Try again.
-Incorrect password. Try again.
-Incorrect password. Try again.
-User Acer logged in.
-['momo','omom'] User momo logged in.
-['sunny','rainy','cloudy','sunny','not sunny'] Incorrect password. Try again.
-Incorrect password. Try again.
-Incorrect password. Try again.
-User sunny blocked!
+
+Examples:
+|Input | Output|
+|-------|--------|
+|['Acer','login','go','let me in','recA'] |Incorrect password. Try again.|
+|                                         |Incorrect password. Try again.|
+|                                         |Incorrect password. Try again.|
+|                                         |User Acer logged in.          |
+|                                         |                              |
+|['momo','omom']                          | User momo logged in.         |
+|                                         |                              |
+|['sunny','rainy','cloudy','sunny','not sunny'] |Incorrect password. Try again.|
+|                                         |Incorrect password. Try again. |
+|                                         |Incorrect password. Try again.|
+|                                         |User sunny blocked!|
 
 ### :black_medium_small_square: \* The Pyramid of King Djoser
 
