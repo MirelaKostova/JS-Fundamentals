@@ -21,31 +21,24 @@ function passwordValidator(password) {
   }
 
   // "Password must consist only of letters and digits"
-  let isConsistRightSymbols = false;
-
-  for (let el of passwordToArr) {
-    let isLetter = el.match(/^[A-Za-z]+$/);
-    let isNumber = Number(el) === el;
-
-    if (isNumber || isLetter) {
-      isConsistRightSymbols = true;
-    }
+  function onlyLettersAndNumbers(password) {
+    return /^[A-Za-z0-9]*$/.test(password);
   }
-  if (isLongEnough && isInclTwoDigits && isConsistRightSymbols) {
+
+  if (isLongEnough && isInclTwoDigits && onlyLettersAndNumbers) {
     console.log("Password is valid");
   } else {
     if (!isLongEnough) {
       console.log("Password must be between 6 and 10 characters");
     }
+    if (!onlyLettersAndNumbers(password)) {
+      console.log("Password must consist only of letters and digits");
+    }
 
     if (!isInclTwoDigits) {
       console.log("Password must have at least 2 digits");
     }
-
-    if (!isConsistRightSymbols) {
-      console.log("Password must consist only of letters and digits");
-    }
   }
 }
 
-passwordValidator("MyPass1234");
+passwordValidator("Pa$s$s");
