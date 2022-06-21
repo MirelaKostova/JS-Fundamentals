@@ -1,44 +1,45 @@
 function passwordValidator(password) {
+  let isLongEnough = longEnough(password);
+  let isOnlyLettersAndNumbers = onlyLettersAndNumbers(password);
+  let isAtLeastTwoDigits = atLeastTwoDigits(password);
   let passwordToArr = password.split("");
 
-  // "Password must be between 6 and 10 characters"
-  let isLongEnough =
-    passwordToArr.length >= 6 && passwordToArr.length <= 10 ? true : false;
-
-  // "Password must have at least 2 digits"
-  let isInclTwoDigits = false;
-  let digitsCounter = 0;
-
-  for (el of passwordToArr) {
-    if (el == Number(el)) {
-      digitsCounter++;
-
-      if (digitsCounter >= 2) {
-        isInclTwoDigits = true;
-        break;
-      }
-    }
-  }
-
-  // "Password must consist only of letters and digits"
-  function onlyLettersAndNumbers(password) {
-    return /^[A-Za-z0-9]*$/.test(password);
-  }
-
-  if (isLongEnough && isInclTwoDigits && onlyLettersAndNumbers) {
+  if (isLongEnough && isOnlyLettersAndNumbers && isAtLeastTwoDigits) {
     console.log("Password is valid");
-  } else {
-    if (!isLongEnough) {
-      console.log("Password must be between 6 and 10 characters");
-    }
-    if (!onlyLettersAndNumbers(password)) {
-      console.log("Password must consist only of letters and digits");
-    }
+  }
+  if (!isLongEnough) {
+    console.log("Password must be between 6 and 10 characters");
+  }
+  if (!isOnlyLettersAndNumbers) {
+    console.log("Password must consist only of letters and digits");
+  }
+  if (!isAtLeastTwoDigits) {
+    console.log("Password must have at least 2 digits");
+  }
 
-    if (!isInclTwoDigits) {
-      console.log("Password must have at least 2 digits");
+  function longEnough(password) {
+    return password.length >= 6 && password.length <= 10 ? true : false;
+  }
+
+  function onlyLettersAndNumbers(password) {
+    return /^[A-Za-z][A-Za-z0-9]*$/.test(password);
+  }
+
+  function atLeastTwoDigits(passwordToArr) {
+    let digitsCounter = 0;
+
+    for (el of passwordToArr) {
+      if (el == Number(el)) {
+        digitsCounter++;
+
+        if (digitsCounter >= 2) {
+          return true;
+        }
+      }
     }
   }
 }
 
+// passwordValidator("logIn");
+// passwordValidator("MyPass123");
 passwordValidator("Pa$s$s");
