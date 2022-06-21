@@ -1,7 +1,7 @@
 function processOddNumbers(arr) {
-  let filteredElements = arr.filter((el, i) => i % 2 != 0);
-  let oddNums = filteredElements.map((x) => x * 2);
-  let result = oddNums.reverse();
+  let oddNums = arr.filter((el, i) => i % 2 != 0);
+  let doubledNums = oddNums.map((x) => x * 2);
+  let result = doubledNums.reverse();
 
   console.log(result.join(" "));
 }
