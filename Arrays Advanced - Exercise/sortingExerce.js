@@ -1,25 +1,20 @@
-// function sorting(numbers) {
-//   let sortedNums = [];
-
-//   for (let el of numbers) {
-//     let biggest = numbers.sort((a, b) => b - a);
-//     let currentBigest = biggest.shift();
-//     sortedNums.push(currentBigest);
-
-//     let smallest = numbers.sort((a, b) => a - b);
-//     let currentSmallest = smallest.shift();
-//     sortedNums.push(currentSmallest);
-//   }
-//   console.log(sortedNums.join(" "));
-// }
-// sorting([1, 21, 3, 52, 69, 63, 31, 2, 18, 94]);
-
-// 94 1 69 2 63 3 52 18 31 21
-
 function sorting(numbers) {
-  let sortedNums = [];
+  let sortedNums = numbers.slice();
+  let result = [];
   let biggest = numbers.sort((a, b) => b - a);
+  let smallest = sortedNums.sort((a, b) => a - b);
 
-  console.log(biggest.join(" "));
+  // console.log(biggest.join());
+  // console.log(smallest.join());
+  for (let i = 0; i < numbers.length / 2; i++) {
+    let smallNum = smallest[i];
+    let bigNum = biggest[i];
+    result.push(bigNum, smallNum);
+  }
+
+  if (numbers.length % 2 != 0) {
+    result.pop();
+  }
+  console.log(result.join(" "));
 }
 sorting([1, 21, 3, 52, 69, 63, 31, 2, 18, 94]);
