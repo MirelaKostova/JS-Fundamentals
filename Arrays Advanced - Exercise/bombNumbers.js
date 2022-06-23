@@ -1,19 +1,23 @@
 function bombNumbers(numbers, bomb) {
   let newArr = numbers.slice();
   let indexOfBomb = newArr.indexOf(bomb[0]);
-  let k = bomb[1];
-
-  for (let element of newArr) {
-    if (element == numbers[indexOfBomb]) {
-      newArr.splice(indexOfBomb - k, k);
-      newArr.splice(indexOfBomb - k, k + 1);
-    }
-  }
-
+  let power = bomb[1];
   let sum = 0;
-  for (let el of newArr) {
-    sum += Number(el);
+
+  function detonation() {
+    let startExplosioIndex = Math.max(0, indexOfBomb - power);
+    let explosionLength = power * 2 + 1;
+    newArr.splice(startExplosioIndex, explosionLength);
+    return newArr;
   }
+
+  while (indexOfBomb != -1) {
+    newArr = detonation(newArr);
+    indexOfBomb = newArr.indexOf(bomb[0]);
+  }
+  newArr.forEach((el) => {
+    sum += el;
+  });
 
   console.log(sum);
 }
