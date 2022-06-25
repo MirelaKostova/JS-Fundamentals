@@ -14,7 +14,7 @@ function heartDelivery(arr) {
     }
 
     if (houses[jumpLength] === 0) {
-      console.log(`Place ${jumpLength} has Valentine's day.`);
+      console.log(`Place ${jumpLength} already had Valentine's day.`);
     } else {
       houses[jumpLength] -= 2;
 
