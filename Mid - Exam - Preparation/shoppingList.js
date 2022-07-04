@@ -1,18 +1,19 @@
 function shoppingList(arr) {
   let list = arr.shift().split("!");
   let index = 0;
-  console.log(arr);
-  console.log(arr.length);
+  //   console.log(arr);
+  //   console.log(arr.length);
   while (arr[index] !== "Go Shopping!" || index < arr.length - 1) {
-    console.log("index", index);
+    // console.log("index", index);
     let [command, item, newItem] = arr[index].split(" ");
+    index++;
 
     switch (command) {
       case "Urgent":
         if (!list.includes(item)) {
           list.unshift(item);
         } else {
-          //   continue;
+          continue;
         }
         break;
 
@@ -20,9 +21,9 @@ function shoppingList(arr) {
         if (list.includes(item)) {
           let itemToRemove = list.indexOf(item);
           list.slice(itemToRemove);
-          console.log(list.indexOf(item));
+          //   console.log(list.indexOf(item));
         } else {
-          //   continue;
+          continue;
         }
         break;
 
@@ -33,7 +34,7 @@ function shoppingList(arr) {
           list.splice(itemToChage, 1, newItem);
           //   console.log(itemToChage);
         } else {
-          //   continue;
+          continue;
         }
         break;
 
@@ -42,15 +43,13 @@ function shoppingList(arr) {
           let grocery = list.slice(list.indexOf(item));
           list.push(grocery);
         } else {
-          //   continue;
+          continue;
         }
         break;
     }
-
-    index++;
   }
 
-  console.log(list.join());
+  console.log(list.join(", "));
 }
 
 // Tomatoes', 'Potatoes', 'Bread'
