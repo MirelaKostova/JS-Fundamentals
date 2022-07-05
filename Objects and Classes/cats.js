@@ -21,6 +21,9 @@ function cats(catsData) {
     catArr.push(newCat);
   }
 
-  console.log(catArr);
+  for (let el of catArr) {
+    el.meow();
+  }
 }
+
 cats(["Mellow 2", "Tom 5"]);
