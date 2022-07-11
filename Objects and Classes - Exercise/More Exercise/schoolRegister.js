@@ -1,42 +1,52 @@
 function schoolRegister(array) {
-  class Student {
-    constructor(name, grade, avgScore) {
-      this.name = name;
-      this.grade = grade;
-      this.avgScore = avgScore;
-    }
-  }
-
-  let listOfStudents = [];
+  // Load students list from array
+  let studentsRegister = [];
 
   for (const el of array) {
     let splitedArr = el.split(", ");
 
     let name = splitedArr[0].split(" ").pop();
     let grade = splitedArr[1].split(" ").pop();
-    let avgScore = splitedArr[2].split(" ").pop();
+    let score = Number(splitedArr[2].split(" ").pop());
 
-    if (avgScore >= 3) {
+    // 'If a student has a lower score than 3, he does not go into the next class'
+    if (score >= 3) {
       grade++;
-      let newStudent = new Student(name, grade, avgScore);
-      listOfStudents.push(newStudent);
+
+      let student = { name, grade, score };
+      studentsRegister.push(student);
     }
   }
+  //   // console.log("listOfStudents -->", listOfStudents);
 
-  listOfStudents.sort((a, b) => a.grade - b.grade);
+  // ---------------------------------------------
+  // School register sorted in ascending order by grade
 
- let prevGrade = student.grade;
-  for (const student of listOfStudents) {
-  
-    // console.log(`Average annual score from last year: ${average(students.map(s => s.score)).toFixed(2)}\n`);
-  }
+  studentsRegister.sort((a, b) => a.grade - b.grade);
+  console.log("listOfStudents -->", listOfStudents);
 
-  averageAnnualScore(listOfStudents){
-    let avgAnnual = listOfStudents.reduce(
-        (previousValue, currentValue) => (previousValue + currentValue,
-        initialValue)/listOfStudents
+  function averageAnnualScore(studentsRegister) {
+    return listOfStudents.reduce(
+      (a, b) => (a.score + b.score, 0) / listOfStudents.length
+    );
   }
 }
+
+// for (const element of listOfStudents) {
+//   const students = element.name;
+//   console.log(`${element.grade} Grade`);
+//   //   console.log(
+//   //     `List of students: ${listOfStudents
+//   //       .map((el) => el.listOfStudents)
+//   //       .join(", ")}`
+//   //   );
+//   //   // console.log(
+//   //   //   `Average annual score from last year: ${average(
+//   //   //     students.map((s) => s.score)
+//   //   //   ).toFixed(2)}\n`
+//   //   // );
+
+///////////////////////////////////////
 
 // `{nextGrade} Grade
 
@@ -44,6 +54,48 @@ function schoolRegister(array) {
 
 // Average annual score from last year: {average annual score on the entire class from last year}`
 // }
+
+function schoolRegister(input) {
+  const register = {};
+
+  for (let line of input) {
+    let tokens = line.split(", ");
+
+    let student = tokens[0].split(" ").pop();
+    let grade = Number(tokens[1].split(" ").pop()) + 1;
+    let score = Number(tokens[2].split(" ").pop());
+
+    if (score >= 3) {
+      let profile = { student, score };
+
+      if (!register.hasOwnProperty(grade)) {
+        register[grade] = [];
+      }
+
+      register[grade].push(profile);
+    }
+  }
+
+  const grades = Object.keys(register);
+
+  for (const grade of grades) {
+    const students = register[grade];
+
+    console.log(`${grade} Grade`);
+    console.log(
+      `List of students: ${students.map((s) => s.student).join(", ")}`
+    );
+    console.log(
+      `Average annual score from last year: ${average(
+        students.map((s) => s.score)
+      ).toFixed(2)}\n`
+    );
+  }
+
+  function average(arr) {
+    return arr.reduce((a, b) => a + b, 0) / arr.length;
+  }
+}
 
 schoolRegister([
   "Student name: Mark, Grade: 8, Graduated with an average score: 4.75",
