@@ -1,6 +1,7 @@
 function aMinerTask(input) {
   let collection = {};
   //   console.log("input ->", input);
+
   for (let i = 0; i < input.length; i++) {
     let resource = input[i];
     let quantity = Number(input[++i]);
