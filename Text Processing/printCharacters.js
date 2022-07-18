@@ -5,3 +5,4 @@ function printCharacters(str) {
 }
 
 printCharacters("AWord");
+printCharacters("Sentence");
