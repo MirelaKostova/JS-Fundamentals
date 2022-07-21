@@ -30,10 +30,10 @@ function worldTour(input) {
       case "Switch":
         let [oldString, newString] = line;
 
-        // let pattern = new RegExp(oldString, "g");
-        // stops = stops.replace(pattern, newString);
+        let pattern = new RegExp(oldString, "g");
+        stops = stops.replace(pattern, newString);
 
-        stops = stops.split(oldString).join(newString);
+        // stops = stops.split(oldString).join(newString);
 
         break;
     }
