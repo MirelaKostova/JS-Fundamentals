@@ -30,9 +30,8 @@ function thePianist(input) {
     action(p1, p2, p3);
   }
 
-  // console.log(collection);
+  // print collection
   for (let piece of Object.entries(collection)) {
-    // console.log(piece);
     console.log(
       `${piece[0]} -> Composer: ${piece[1].composer}, Key: ${piece[1].key}`
     );
@@ -40,7 +39,6 @@ function thePianist(input) {
 
   // Add piece ()
   function addPiece(piece, composer, key) {
-    // console.log(piece);
     if (!collection.hasOwnProperty(piece)) {
       console.log(`${piece} by ${composer} in ${key} added to the collection!`);
 
@@ -48,8 +46,6 @@ function thePianist(input) {
         composer: composer,
         key: key,
       };
-
-      //   console.log(piece, composer, key);
     } else {
       console.log(`${piece} is already in the collection!`);
     }
