@@ -10,15 +10,12 @@ function heroesOfCodeAndLogic(input) {
     let [name, hp, mp] = input.shift().split(" ");
 
     //set heroes and their powers
+    // -a hero can have a maximum of 100 HP and 200 MP
     heroes[name] = {
-      HP: Number(hp),
-      MP: Number(mp),
+      HP: hp > 100 ? 100 : Number(hp),
+      MP: mp > 200 ? 200 : Number(mp),
       isAlive: true,
     };
-
-    // -a hero can have a maximum of 100 HP and 200 MP
-    hp > 100 ? 100 : hp;
-    mp > 200 ? 200 : mp;
   }
 
   // command actions
@@ -35,6 +32,7 @@ function heroesOfCodeAndLogic(input) {
     let action = actions[command];
     action(param1, param2, param3);
   }
+
   //"CastSpell – {hero name} – {MP needed} – {spell name}"
   // - If the hero has the required MP, he casts the spell, thus reducing his MP. Print this message:
   function castSpell(heroName, mpNeeded, spellName) {
@@ -54,12 +52,13 @@ function heroesOfCodeAndLogic(input) {
     // Reduce the hero HP by the given damage amount
     let currentHP = heroes[heroName].HP - Number(damage);
 
-    if (heroes[heroName].HP <= 0) {
+    if (currentHP <= 0) {
       heroes[heroName].isAlive = false;
     }
 
     //If the hero is still alive (his HP is greater than 0) print message
     if (heroes[heroName].isAlive) {
+      heroes[heroName].HP = currentHP;
       console.log(
         `${heroName} was hit for ${damage} HP by ${attacker} and now has ${currentHP} HP left!`
       );
@@ -77,7 +76,7 @@ function heroesOfCodeAndLogic(input) {
     if (currMP > 200) {
       let oldMP = heroes[heroName].MP;
       heroes[heroName].MP = 200;
-      console.log(`${heroName} recharged for ${currMP - oldMP} MP!`);
+      console.log(`${heroName} recharged for ${200 - oldMP} MP!`);
     } else {
       heroes[heroName].MP = currMP;
       console.log(`${heroName} recharged for ${amount} MP!`);
@@ -86,13 +85,16 @@ function heroesOfCodeAndLogic(input) {
 
   // "Heal – {hero name} – {amount}"
   function heal(heroName, amount) {
-    // let oldHP = heroes[heroName].HP
-    // let currHP = heroes[heroName].HP + Number(amount);
-    heroes[heroName].HP = 100;
-    //	The hero increases his HP. If a command is given that would bring the HP of the hero above the maximum value (100), HP is increased to 100
-    // -print message:
-    console.log(`${heroName} healed for ${amount} HP!`);
-    // ""
+    let oldHP = heroes[heroName].HP; //70
+    let currHP = heroes[heroName].HP + Number(amount); //70 + 50 = 120 30
+
+    if (currHP > 100) {
+      heroes[heroName].HP = 100;
+      console.log(`${heroName} healed for ${100 - oldHP} HP!`);
+    } else {
+      heroes[heroName].HP = currHP;
+      console.log(`${heroName} healed for ${amount} HP!`);
+    }
   }
 
   //print result
@@ -103,13 +105,27 @@ function heroesOfCodeAndLogic(input) {
   }
 }
 
+// heroesOfCodeAndLogic([
+//   "2",
+//   "Solmyr 85 120",
+//   "Kyrre 99 50",
+//   "Heal - Solmyr - 10",
+//   "Recharge - Solmyr - 50",
+//   "TakeDamage - Kyrre - 66 - Orc",
+//   "CastSpell - Kyrre - 15 - ViewEarth",
+//   "End",
+// ]);
+
 heroesOfCodeAndLogic([
-  "2",
-  "Solmyr 85 120",
-  "Kyrre 99 50",
-  "Heal - Solmyr - 10",
-  "Recharge - Solmyr - 50",
-  "TakeDamage - Kyrre - 66 - Orc",
-  "CastSpell - Kyrre - 15 - ViewEarth",
+  "4",
+  "Adela 90 150",
+  "SirMullich 70 40",
+  "Ivor 1 111",
+  "Tyris 94 61",
+  "Heal - SirMullich - 50",
+  "Recharge - Adela - 100",
+  "CastSpell - Tyris - 1000 - Fireball",
+  "TakeDamage - Tyris - 99 - Fireball",
+  "TakeDamage - Ivor - 3 - Mosquito",
   "End",
 ]);
