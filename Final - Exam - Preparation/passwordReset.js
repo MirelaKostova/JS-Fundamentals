@@ -8,18 +8,20 @@ function passwordReset(input) {
   };
 
   //parse input until "Done" command
-  input.forEach((line) => {
-    if (line !== "Done") {
-      let [command, ...tokens] = input.shift().split(" ");
-      let rawPass = password;
-
-      password = actions[command](password, ...tokens);
-
-      if (rawPass !== password) {
-        console.log(password);
-      }
+  for (let line of input) {
+    if (line === "Done") {
+      break;
     }
-  });
+
+    let [command, ...tokens] = line.split(" ");
+    let rawPass = password;
+
+    password = actions[command](password, ...tokens);
+
+    if (rawPass !== password) {
+      console.log(password);
+    }
+  }
 
   // TakeOdd ()
   function takeOdd(password) {
@@ -52,8 +54,16 @@ function passwordReset(input) {
   console.log(`Your password is: ${password}`);
 }
 
-// -- Second solution --
+passwordReset([
+  "Siiceercaroetavm!:?:ahsott.:i:nstupmomceqr",
+  "TakeOdd",
+  "Cut 15 3",
+  "Substitute :: -",
+  "Substitute | ^",
+  "Done",
+]);
 
+// -- Second solution --
 /*
 function passwordReset(input) {
   let password = input.shift();
@@ -113,12 +123,3 @@ function passwordReset(input) {
   console.log(`Your password is: ${password}`);
 }
 */
-
-passwordReset([
-  "Siiceercaroetavm!:?:ahsott.:i:nstupmomceqr",
-  "TakeOdd",
-  "Cut 15 3",
-  "Substitute :: -",
-  "Substitute | ^",
-  "Done",
-]);
