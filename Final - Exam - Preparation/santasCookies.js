@@ -26,19 +26,6 @@ function santasCookies(input) {
   batches.forEach((cookies) => {
     let boxesPerBake = 0;
 
-    cookiesPerBake =
-      ((140 + 10 + 20) *
-        Math.min(
-          flourCups(cookies.flour),
-          sugarSpoons(cookies.sugar),
-          cocoaSpoons(cookies.cocoa)
-        )) /
-      25;
-
-    // - (<=0), print the following message: "Ingredients are not enough for a box of cookies."
-    // - else calculate the cookies and print the number of boxes you get for the current batch:
-    //   "Boxes of cookies: {boxes of cookies per current bake}"
-
     if (
       flourCups(cookies.flour) <= 0 ||
       sugarSpoons(cookies.sugar) <= 0 ||
@@ -46,6 +33,15 @@ function santasCookies(input) {
     ) {
       console.log(`Ingredients are not enough for a box of cookies.`);
     } else {
+      cookiesPerBake =
+        ((140 + 10 + 20) *
+          Math.min(
+            flourCups(cookies.flour),
+            sugarSpoons(cookies.sugar),
+            cocoaSpoons(cookies.cocoa)
+          )) /
+        25;
+
       boxesPerBake = Math.floor(cookiesPerBake / 5);
 
       totalBoxes += boxesPerBake;
