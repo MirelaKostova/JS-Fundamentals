@@ -1,5 +1,62 @@
 function passwordReset(input) {
   let password = input.shift();
+
+  let actions = {
+    TakeOdd: takeOdd,
+    Cut: cut,
+    Substitute: substitute,
+  };
+
+  //parse input until "Done" command
+  input.forEach((line) => {
+    if (line !== "Done") {
+      let [command, ...tokens] = input.shift().split(" ");
+      let rawPass = password;
+
+      password = actions[command](password, ...tokens);
+
+      if (rawPass !== password) {
+        console.log(password);
+      }
+    }
+  });
+
+  // TakeOdd ()
+  function takeOdd(password) {
+    return [...password].filter((symbol, index) => index % 2 !== 0).join("");
+  }
+
+  // Cut ()
+  function cut(password, index, length) {
+    let startIndex = Number(index);
+    let endIndex = startIndex + Number(length);
+
+    const substring = password.substring(startIndex, endIndex);
+    return password.replace(substring, "");
+  }
+
+  // Substitute ()
+  function substitute(password, substring, substitute) {
+    if (password.includes(substring)) {
+      return (password = password.replace(
+        new RegExp(substring, "g"),
+        substitute
+      ));
+    }
+
+    console.log("Nothing to replace!");
+    return password;
+  }
+
+  // print result
+  console.log(`Your password is: ${password}`);
+}
+
+// -- Second solution --
+
+/*
+function passwordReset(input) {
+  let password = input.shift();
   //   console.log(password);
 
   let actions = {
@@ -55,6 +112,7 @@ function passwordReset(input) {
   }
   console.log(`Your password is: ${password}`);
 }
+*/
 
 passwordReset([
   "Siiceercaroetavm!:?:ahsott.:i:nstupmomceqr",
