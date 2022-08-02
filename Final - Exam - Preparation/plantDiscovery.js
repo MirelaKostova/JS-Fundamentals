@@ -39,7 +39,7 @@ function plantDiscovery(input) {
 
   //print result
   console.log("Plants for the exhibition:");
-  // if(plantCollection)
+
   Object.entries(plantCollection).forEach(([plant, data]) =>
     console.log(
       `- ${plant}; Rarity: ${data.rarity}; Rating: ${data.avgRate.toFixed(2)}`
