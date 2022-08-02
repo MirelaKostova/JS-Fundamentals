@@ -5,7 +5,7 @@ function plantDiscovery(input) {
   const splitParams = /\s+/;
 
   //create collection
-  let plantCollection = new Map();
+  let plantCollection = {};
 
   let actions = {
     Rate: rate,
@@ -19,11 +19,11 @@ function plantDiscovery(input) {
 
     let [plant, rarity] = line.split(splitLine);
 
-    plantCollection.set(plant, {
+    plantCollection[plant] = {
       rarity: Number(rarity),
       rating: [],
       avgRate: 0,
-    });
+    };
   }
 
   //parse input till command "Exhibition"
@@ -37,20 +37,46 @@ function plantDiscovery(input) {
     }
   });
 
-  console.log(plantCollection);
+  //print result
+  console.log("Plants for the exhibition:");
+  // if(plantCollection)
+  Object.entries(plantCollection).forEach(([plant, data]) =>
+    console.log(
+      `- ${plant}; Rarity: ${data.rarity}; Rating: ${data.avgRate.toFixed(2)}`
+    )
+  );
 
+  function avgRate(plant) {
+    return plantCollection[plant].rating.reduce(
+      (a, b) => (a + b) / plantCollection[plant].rating.length
+    );
+  }
   //  Rate  ()
   function rate(plant, rating) {
-    !plantCollection.has(plant)
-      ? "error"
-      : plantCollection.get(plant).rating.push(Number(rating));
+    if (plantCollection[plant] !== undefined) {
+      plantCollection[plant].rating.push(Number(rating));
+      plantCollection[plant].avgRate = avgRate(plant);
+    } else {
+      console.log("error");
+    }
   }
-
   // Update ()
-  function update(plant, newRarity) {}
-
+  function update(plant, newRarity) {
+    if (plantCollection[plant] !== undefined) {
+      plantCollection[plant].rarity = Number(newRarity);
+    } else {
+      console.log("error");
+    }
+  }
   // Reset ()
-  function reset(plant) {}
+  function reset(plant) {
+    if (plantCollection[plant] !== undefined) {
+      plantCollection[plant].rating.length = 0;
+      plantCollection[plant].avgRate = 0;
+    } else {
+      console.log("error");
+    }
+  }
 }
 
 plantDiscovery([
