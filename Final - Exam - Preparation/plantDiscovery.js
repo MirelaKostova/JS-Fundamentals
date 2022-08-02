@@ -1,4 +1,74 @@
 function plantDiscovery(input) {
+  const number = Number(input.shift());
+  const splitLine = /<->/g;
+  const splitCommand = /[:-]/g;
+  const splitParams = /\s+/;
+
+  //create collection
+  let plantCollection = new Map();
+
+  let actions = {
+    Rate: rate,
+    Update: update,
+    Reset: reset,
+  };
+
+  //parse first lines input
+  for (let i = 0; i < number; i++) {
+    const line = input.shift();
+
+    let [plant, rarity] = line.split(splitLine);
+
+    plantCollection.set(plant, {
+      rarity: Number(rarity),
+      rating: [],
+      avgRate: 0,
+    });
+  }
+
+  //parse input till command "Exhibition"
+  input.forEach((commandLine) => {
+    if (commandLine !== "Exhibition") {
+      let [command, ...params] = commandLine
+        .replace(splitCommand, "")
+        .split(splitParams);
+
+      actions[command](...params);
+    }
+  });
+
+  console.log(plantCollection);
+
+  //  Rate  ()
+  function rate(plant, rating) {
+    !plantCollection.has(plant)
+      ? "error"
+      : plantCollection.get(plant).rating.push(Number(rating));
+  }
+
+  // Update ()
+  function update(plant, newRarity) {}
+
+  // Reset ()
+  function reset(plant) {}
+}
+
+plantDiscovery([
+  "3",
+  "Arnoldii<->4",
+  "Woodii<->7",
+  "Welwitschia<->2",
+  "Rate: Woodii - 10",
+  "Rate: Welwitschia - 7",
+  "Rate: Arnoldii - 3",
+  "Rate: Woodii - 5",
+  "Update: Woodii - 5",
+  "Reset: Arnoldii",
+  "Exhibition",
+]);
+
+/*
+function plantDiscovery(input) {
   let actions = {
     Rate: rate,
     Update: update,
@@ -77,17 +147,18 @@ function plantDiscovery(input) {
     }
   }
 }
+*/
 
-plantDiscovery([
-  "3",
-  "Arnoldii<->4",
-  "Woodii<->7",
-  "Welwitschia<->2",
-  "Rate: Woodii - 10",
-  "Rate: Welwitschia - 7",
-  "Rate: Arnoldii - 3",
-  "Rate: Woodii - 5",
-  "Update: Woodii - 5",
-  "Reset: Arnoldii",
-  "Exhibition",
-]);
+// plantDiscovery([
+//   "3",
+//   "Arnoldii<->4",
+//   "Woodii<->7",
+//   "Welwitschia<->2",
+//   "Rate: Woodii - 10",
+//   "Rate: Welwitschia - 7",
+//   "Rate: Arnoldii - 3",
+//   "Rate: Woodii - 5",
+//   "Update: Woodii - 5",
+//   "Reset: Arnoldii",
+//   "Exhibition",
+// ]);
