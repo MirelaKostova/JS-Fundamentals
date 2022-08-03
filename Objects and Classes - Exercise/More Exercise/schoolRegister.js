@@ -38,9 +38,11 @@ function schoolRegister(array) {
     students.map((a) => (avgScore += a.score));
     avgScore /= listOfStudents.length;
 
-    console.log(`List of students: ${listOfStudents.join(", ")}\n`);
+    console.log(`List of students: ${listOfStudents.join(", ")}`);
 
-    console.log(`Average annual score from last year: ${avgScore.toFixed(2)}`);
+    console.log(
+      `Average annual score from last year: ${avgScore.toFixed(2)}\n`
+    );
   }
 }
 
