@@ -22,15 +22,15 @@ function memoryGame(input) {
       let elToAdd = `-${moves}a`;
       let index = Math.floor(sequenceOfEl.length / 2);
       sequenceOfEl.splice(index, 0, elToAdd, elToAdd);
-    }
-
-    if (sequenceOfEl[index1] == sequenceOfEl[index2]) {
-      console.log(
-        `Congrats! You have found matching elements - ${sequenceOfEl[index1]}!`
-      );
-      sequenceOfEl = sequenceOfEl.filter((el) => el !== sequenceOfEl[index1]);
-    } else if (sequenceOfEl[index1] !== sequenceOfEl[index2]) {
-      console.log("Try again!");
+    } else if (!isEqual || !isNotInBounds) {
+      if (sequenceOfEl[index1] == sequenceOfEl[index2]) {
+        console.log(
+          `Congrats! You have found matching elements - ${sequenceOfEl[index1]}!`
+        );
+        sequenceOfEl = sequenceOfEl.filter((el) => el !== sequenceOfEl[index1]);
+      } else if (sequenceOfEl[index1] !== sequenceOfEl[index2]) {
+        console.log("Try again!");
+      }
     }
 
     if (sequenceOfEl.length <= 0) {
@@ -51,6 +51,8 @@ function memoryGame(input) {
     console.log("Sorry you lose :(\n" + `${sequenceOfEl.join(" ")}`);
   }
 }
-// memoryGame(["1 1 2 2 3 3 4 4 5 5", "1 0", "-1 0", "1 0", "1 0", "1 0", "end"]);
+memoryGame(["1 1 2 2 3 3 4 4 5 5", "1 0", "-1 0", "1 0", "1 0", "1 0", "end"]);
+console.log("------------");
 memoryGame(["a 2 4 a 2 4", "0 3", "0 2", "0 1", "0 1", "end"]);
-// memoryGame(["a 2 4 a 2 4", "4 0", "0 2", "0 1", "0 1", "end"]);
+console.log("------------");
+memoryGame(["a 2 4 a 2 4", "4 0", "0 2", "0 1", "0 1", "end"]);
