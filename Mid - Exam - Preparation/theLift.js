@@ -1,46 +1,41 @@
 function theLift(input) {
   let peopleWaitnig = Number(input[0]);
-  let people = peopleWaitnig;
-  let wagons = input[1].split(" ").map(Number);
+  let trainWagons = input[1].split(" ").map(Number);
 
-  let allSeats = wagons.length * 4;
-  let notFreeSeats = allSeats - wagons.reduce((a, b) => a + b, 0);
+  let allFreeSpots =
+    trainWagons.length * 4 - trainWagons.reduce((a, b) => a + b, 0);
 
-  for (let i = 0; i < wagons.length; i++) {
-    if (people <= 0) {
+  for (let wagon = 0; wagon < trainWagons.length; wagon++) {
+    if (peopleWaitnig <= 0) {
       break;
     }
 
-    let currWagon = wagons[i];
-    let currPeople = 4 - currWagon;
+    let currentPeople = 4 - trainWagons[wagon];
 
-    if (currPeople >= 0) {
-      if (people < 4 && currPeople > 0) {
-        wagons[i] += people;
-      } else {
-        wagons[i] += currPeople;
-      }
-      people -= currPeople;
+    if (currentPeople < 0) {
+      currentPeople += peopleWaitnig;
+    }
+
+    trainWagons[wagon] += currentPeople;
+    peopleWaitnig -= currentPeople;
+
+    let freeSpots = allFreeSpots - trainWagons.reduce((a, b) => a + b, 0);
+
+    if (peopleWaitnig <= 0 && freeSpots > 0) {
+      console.log("The lift has empty spots!");
+    } else if (peopleWaitnig > 0 && freeSpots <= 0) {
+      console.log(
+        `There isn't enough space! ${peopleWaitnig} people in a queue!`
+      );
     }
   }
 
-  let peopleOnTrain = wagons.reduce((a, b) => a + b, 0);
-
-  if (people <= 0 && allSeats - peopleOnTrain > 0) {
-    console.log("The lift has empty spots!");
-  } else {
-    console.log(
-      `There isn't enough space! ${
-        peopleWaitnig - (peopleOnTrain - notFreeSeats)
-      } people in a queue!`
-    );
-  }
-  console.log(wagons.join(" "));
+  console.log(trainWagons.join(" "));
 }
 
-// theLift(["15", "0 0 0 0 0"]);
+theLift(["15", "0 0 0 0 0"]);
 // console.log("---------");
-theLift(["20", "0 2 0"]);
+// theLift(["20", "0 2 0"]);
 
 // function theLift(input) {
 //   let peopleWaitingForLift = Number(input[0]);
