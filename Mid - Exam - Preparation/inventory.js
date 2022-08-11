@@ -38,7 +38,7 @@ function inventory(input) {
 
     if (collection.includes(oldItem)) {
       let index = collection.indexOf(oldItem);
-      //   console.log(index);
+
       collection.splice(index + 1, 0, newItem);
     }
   }
@@ -47,10 +47,9 @@ function inventory(input) {
   function renew(item) {
     if (collection.includes(item)) {
       let index = collection.indexOf(item);
-      let itemToAdd = collection.slice(index, 1);
 
       collection.splice(index, 1);
-      collection.push(itemToAdd);
+      collection.push(item);
     }
   }
 }

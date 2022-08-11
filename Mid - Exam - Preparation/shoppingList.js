@@ -1,64 +1,63 @@
-function shoppingList(arr) {
-  let list = arr.shift().split("!");
-  let index = 0;
-  //   console.log(arr);
-  //   console.log(arr.length);
-  while (arr[index] !== "Go Shopping!" || index < arr.length - 1) {
-    // console.log("index", index);
-    let [command, item, newItem] = arr[index].split(" ");
-    index++;
+function shoppingList(input) {
+  let list = input.shift().split("!");
+  // console.log(list);
+  while (input[0] !== "Go Shopping!") {
+    let [command, param1, param2] = input.shift().split(" ");
 
-    switch (command) {
-      case "Urgent":
-        if (!list.includes(item)) {
-          list.unshift(item);
-        } else {
-          continue;
-        }
-        break;
-
-      case "Unnecessary":
-        if (list.includes(item)) {
-          let itemToRemove = list.indexOf(item);
-          list.slice(itemToRemove);
-          //   console.log(list.indexOf(item));
-        } else {
-          continue;
-        }
-        break;
-
-      case "Correct":
-        if (list.includes(item)) {
-          let itemToChage = list.indexOf(item);
-
-          list.splice(itemToChage, 1, newItem);
-          //   console.log(itemToChage);
-        } else {
-          continue;
-        }
-        break;
-
-      case "Rearrange":
-        if (list.includes(item)) {
-          let grocery = list.slice(list.indexOf(item));
-          list.push(grocery);
-        } else {
-          continue;
-        }
-        break;
+    if (command === "Urgent") {
+      urgent(param1);
+    } else if (command === "Unnecessary") {
+      unnecessary(param1);
+    } else if (command === "Correct") {
+      correct(param1, param2);
+    } else if (command === "Rearrange") {
+      rearrange(param1);
     }
   }
 
   console.log(list.join(", "));
+
+  function urgent(item) {
+    if (!isExistsInTheList(item)) {
+      list.unshift(item);
+    }
+  }
+
+  function unnecessary(item) {
+    if (isExistsInTheList(item)) {
+      let index = list.indexOf(item);
+      list.splice(index, 1);
+    }
+  }
+
+  function correct(oldItem, newItem) {
+    if (isExistsInTheList(oldItem)) {
+      let index = list.indexOf(oldItem);
+      list.splice(index, 1, newItem);
+    }
+  }
+
+  function rearrange(item) {
+    if (isExistsInTheList(item)) {
+      let index = list.indexOf(item);
+      list.splice(index, 1);
+      list.push(item);
+    }
+  }
+
+  function isExistsInTheList(item) {
+    return list.includes(item);
+  }
 }
 
-// Tomatoes', 'Potatoes', 'Bread'
-// shoppingList([
-//   "Tomatoes!Potatoes!Bread",
-//   "Unnecessary Milk",
-//   "Urgent Tomatoes",
-//   "Go Shopping!",
-// ]);
+shoppingList([
+  "Tomatoes!Potatoes!Bread",
+  "Unnecessary Milk",
+  "Urgent Tomatoes",
+  "Go Shopping!",
+]);
+
+console.log("------------------------");
 
 shoppingList([
   "Milk!Pepper!Salt!Water!Banana",
