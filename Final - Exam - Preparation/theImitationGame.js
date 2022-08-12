@@ -38,11 +38,13 @@ function theImitationGame(input) {
 
   // ChangeAll {substring} {replacement}":
   function changeAll([substring, replacement]) {
-    // message = message.replace(new RegExp(substring, "g"), replacement);
+    // let regex = new RegExp(substring, "g");
+    // message = message.replace(regex, replacement);
 
-    while (message.includes(substring)) {
-      message = message.replace(substring, replacement);
-    }
+    message = message.split(substring).join(replacement);
+    // while (message.includes(substring)) {
+    //   message = message.replace(substring, replacement);
+    // }
   }
 }
 
