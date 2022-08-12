@@ -1,0 +1,3 @@
+function degustationParty(input) {}
+
+degustationParty();
