@@ -1,4 +1,65 @@
 function theImitationGame(input) {
+  let message = input.shift();
+
+  while (input[0] !== "Decode") {
+    let [command, ...params] = input.shift().split("|");
+
+    switch (command) {
+      case "Move":
+        move(params);
+        break;
+
+      case "Insert":
+        insert(params);
+        break;
+
+      case "ChangeAll":
+        changeAll(params);
+        break;
+    }
+  }
+
+  //print result
+  console.log(`The decrypted message is: ${message}`);
+
+  // "Move {number of letters}":
+  function move(number) {
+    number = Number(number);
+
+    let firstLetters = message.substring(0, number);
+    message = message.substring(number) + firstLetters;
+  }
+
+  // "Insert {index} {value}":
+  function insert([index, value]) {
+    index = Number(index);
+    message = message.substring(0, index) + value + message.substring(index);
+  }
+
+  // ChangeAll {substring} {replacement}":
+  function changeAll([substring, replacement]) {
+    // message = message.replace(new RegExp(substring, "g"), replacement);
+
+    while (message.includes(substring)) {
+      message = message.replace(substring, replacement);
+    }
+  }
+}
+
+theImitationGame(["zzHe", "ChangeAll|z|l", "Insert|2|o", "Move|3", "Decode"]);
+
+console.log("------------");
+theImitationGame([
+  "owyouh",
+  "Move|2",
+  "Move|3",
+  "Insert|3|are",
+  "Insert|9|?",
+  "Decode",
+]);
+
+/*
+function theImitationGame(input) {
   // get encrypted message
   let message = input.shift();
 
@@ -43,13 +104,4 @@ function theImitationGame(input) {
     }
   }
 }
-
-theImitationGame(["zzHe", "ChangeAll|z|l", "Insert|2|o", "Move|3", "Decode"]);
-theImitationGame([
-  "owyouh",
-  "Move|2",
-  "Move|3",
-  "Insert|3|are",
-  "Insert|9|?",
-  "Decode",
-]);
+*/
