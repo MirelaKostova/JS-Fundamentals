@@ -1,4 +1,4 @@
-function solve(input) {
+function employees(input) {
   let n = Number(input.shift());
   let pattern =
     /(?<name>[A-Z][a-z]{2,}\s[A-Z][a-z]{2,})#+(?<position>(\&{0,1}[A-Z][a-z]+){1,})[0-9]{2}(?<company>[A-Z]\w+\s)(?<end>JSC|Ltd.)/g;
@@ -18,7 +18,7 @@ function solve(input) {
   }
 }
 
-solve([
+employees([
   "4",
   "Tanya Petrova##Dental&Assistants25Health Ltd.",
   "Kalina Mihova#Occupational&Therapy&Aides00Health Ltd.",
@@ -26,7 +26,7 @@ solve([
   "Lily petrova#Speech&Pathology&Assistants60Health Ltd.",
 ]);
 
-solve([
+employees([
   "2",
   "Mariya Ivanova#Photographer&&Machine25PhotoStudio12 Ltd.",
   "Monica Hristova####Nuclear&Engineer99Station JSC",
