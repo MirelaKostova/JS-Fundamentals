@@ -1,4 +1,4 @@
-function solve(input) {
+function shopping(input) {
   let list = {};
 
   while (input[0] !== "Go Shopping") {
@@ -61,21 +61,12 @@ function solve(input) {
         products: [],
         hasImportantProduct: true,
       };
-
-      //   list[store].push(item);
     }
-
-    // if (!list[store].products.includes(item)) {
-
-    // }
 
     if (!isItemExist(item)) {
       list[store].products.unshift(item);
       list[store].hasImportantProduct = true;
     }
-    // else if (list.includes(item)) {
-    // no matter in which store, do not add it
-    // }
   }
 
   // Remove->{Store}
@@ -99,7 +90,7 @@ function solve(input) {
   }
 }
 
-solve([
+shopping([
   "Add->Grocery->Dried-fruit,Nuts,Lemons",
   "Add->Market->Nuts,Juice",
   "Important->Market->Snack",
@@ -109,7 +100,7 @@ solve([
 
 console.log("---------------");
 
-solve([
+shopping([
   "Add->Peak->Batteries,Umbrella",
   "Add->Groceries->Water,Juice,Food",
   "Add->Peak->Tent",
@@ -120,7 +111,7 @@ solve([
 
 console.log("---------------");
 
-solve([
+shopping([
   "Add->Peak->Batteries,Umbrella",
   "Add->Groceries->Water,Juice,Food",
   "Add->Peak->Water",
