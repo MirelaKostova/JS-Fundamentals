@@ -1,4 +1,4 @@
-function solve(input) {
+function warriorsQuest(input) {
   let string = input.shift();
 
   // until 'For Azeroth'
@@ -53,7 +53,6 @@ function solve(input) {
     if (isIndexValid(index)) {
       string =
         string.substring(0, index) + letter + string.substring(index + 1);
-      //   string = string.replace(string[index], letter);
       console.log("Success!");
     } else {
       console.log("Dispel too weak.");
@@ -96,7 +95,7 @@ function solve(input) {
 
 // console.log("----------------");
 
-solve([
+warriorsQuest([
   "fr1c710n",
   "GladiatorStance",
   "Dispel 2 I",
@@ -108,4 +107,4 @@ solve([
 
 // console.log("----------------");
 
-// solve(["TR1GG3R", "Dispel 2 I", "Dispel 5 E", "For Azeroth"]);
+// warriorsQuest(["TR1GG3R", "Dispel 2 I", "Dispel 5 E", "For Azeroth"]);
