@@ -20,6 +20,7 @@ app.use(
     extended: true,
   })
 );
+
 routing(app);
 
 app.listen(port, () => console.log("Listening on port " + port + "..."));
