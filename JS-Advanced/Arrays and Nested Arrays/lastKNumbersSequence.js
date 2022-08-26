@@ -1,22 +1,11 @@
 function lastKNumbersSequence(n, k) {
   let result = [1];
 
-  for (let i = 0; i < n; i++) {
-    let currEl = result[i];
-
-    for (let j = i; j < k; j--) {
-      if (j >= 0) {
-        currEl += result[j];
-      } else {
-        {
-          break;
-        }
-      }
-    }
-
+  for (let i = 0; i < n - 1; i++) {
+    let currEl = result.slice(-k).reduce((a, b) => a + b, 0);
     result.push(currEl);
   }
-  // console.log(n, k);
+
   console.log(result);
 }
 
