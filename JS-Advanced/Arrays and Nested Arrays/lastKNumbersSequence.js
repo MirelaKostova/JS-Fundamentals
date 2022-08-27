@@ -6,7 +6,7 @@ function lastKNumbersSequence(n, k) {
     result.push(currEl);
   }
 
-  console.log(result);
+  return result;
 }
 
 lastKNumbersSequence(6, 3);
