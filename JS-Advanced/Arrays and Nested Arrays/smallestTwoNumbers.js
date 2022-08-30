@@ -1,5 +1,5 @@
 function smallestTwoNumbers(input) {
-  let sorted = input.sort((a, b) => a - b).slice(0, 2);
+  const sorted = input.sort((a, b) => a - b).slice(0, 2);
 
   console.log(sorted);
 }
