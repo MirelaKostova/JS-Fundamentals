@@ -10,7 +10,7 @@ function diagonalSums(input) {
     secondDiagonal += el[indexR--];
   }
 
-  console.log(firstDiagonal + " " + secondDiagonal);
+  console.log(firstDiagonal, secondDiagonal);
 }
 
 diagonalSums([
