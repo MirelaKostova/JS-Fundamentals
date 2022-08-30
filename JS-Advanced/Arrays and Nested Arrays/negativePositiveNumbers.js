@@ -1,13 +1,11 @@
 function negativePositiveNumbers(input) {
-  let newArray = [];
+  const newArray = [];
 
   input.filter((number) =>
     number < 0 ? newArray.unshift(number) : newArray.push(number)
   );
 
-  newArray.forEach((number) => {
-    console.log(number);
-  });
+  console.log(newArray.join("\n"));
 }
 
 negativePositiveNumbers([7, -2, 8, 9]);
