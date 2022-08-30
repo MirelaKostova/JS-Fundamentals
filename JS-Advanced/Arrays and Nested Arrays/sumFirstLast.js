@@ -1,5 +1,5 @@
 function sumFirstLast(input) {
-  return Number(input.shift()) + Number(input.pop());
+  return Number([...input].shift()) + Number([...input].pop());
 }
 
 sumFirstLast(["20", "30", "40"]);
