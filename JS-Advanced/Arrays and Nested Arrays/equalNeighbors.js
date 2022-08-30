@@ -5,30 +5,34 @@ function equalNeighbors(input) {
     for (let j = 0; j < input[i].length; j++) {
       let currEl = input[i][j];
 
-      console.log(input[i + 1][j]);
-      if (currEl === input[i + 1][j]) {
-        pairsCount++;
+      let nextIndex = i + 1;
+      if (nextIndex < input.length) {
+        if (currEl === input[nextIndex][j]) {
+          pairsCount++;
+        }
       }
 
-      console.log(input[i][j + 1]);
-      if (currEl === input[i][j + 1]) {
-        pairsCount++;
+      let nextIndexRow = j + 1;
+      if (nextIndexRow < input[i].length) {
+        if (currEl === input[i][nextIndexRow]) {
+          pairsCount++;
+        }
       }
-
-      //   console.log(input[i][j - 1]);
-      //   if (currEl === input[i][j - 1]) {
-      //     pairsCount++;
-      //   }
-
-      //   if (currEl === input[i - 1][j]) {
-      //     pairsCount++;
-      //   }
     }
   }
 
-  console.log(pairsCount);
+  //   console.log(pairsCount);
+  return pairsCount;
 }
 
+equalNeighbors([
+  ["2", "3", "4", "7", "0"],
+  ["4", "0", "5", "3", "4"],
+  ["2", "3", "5", "4", "2"],
+  ["9", "8", "7", "5", "4"],
+]);
+
+console.log("------------------------");
 equalNeighbors([
   ["test", "yes", "yo", "ho"],
   ["well", "done", "yo", "6"],
