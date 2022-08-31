@@ -13,9 +13,9 @@ function sortAnArrayBy2Criteria(input) {
       return -1;
     } else if (prev.length < curr.length) {
       return 1;
-    } 
+    }
 
-    if()
+    // if()
     {
       curr.localeCompare(prev);
     }
