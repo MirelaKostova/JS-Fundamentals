@@ -1,33 +1,22 @@
 function sortAnArrayBy2Criteria(input) {
-  input
-    .map((el) => el.toLowerCase())
-    .sort((prev, curr) => compareFn(prev, curr));
-
-  // primary criteria: by a length in ascending order
-  // second criteria: by alphabetical value in ascending order
-
-  console.log(input);
+  return input.sort(compareFn).join("\n");
 
   function compareFn(prev, curr) {
-    if (prev.length > curr.length) {
-      return -1;
-    } else if (prev.length < curr.length) {
-      return 1;
+    if (prev.length === curr.length) {
+      return prev.localeCompare(curr);
     }
-
-    // if()
-    {
-      curr.localeCompare(prev);
-    }
+    return prev.length - curr.length;
   }
 }
 
-sortAnArrayBy2Criteria(["alpha", "beta", "gamma"]);
+console.log(sortAnArrayBy2Criteria(["alpha", "beta", "gamma"]));
 // beta
 // alpha
 // gamma
 
-sortAnArrayBy2Criteria(["Isacc", "Theodor", "Jack", "Harrison", "George"]);
+console.log(
+  sortAnArrayBy2Criteria(["Isacc", "Theodor", "Jack", "Harrison", "George"])
+);
 // Jack
 // Isacc
 // George
