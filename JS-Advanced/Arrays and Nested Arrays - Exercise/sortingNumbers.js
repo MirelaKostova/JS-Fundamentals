@@ -1,15 +1,12 @@
 function sortingNumbers(array) {
   array.sort((a, b) => a - b);
 
-  console.log(array);
-
-  for (let index = 0; index < array.length; index++) {
-    const element = array[index];
+  for (let index = 0; index < array.length; index += 2) {
     const lastEl = array.pop();
     array.splice(index + 1, 0, lastEl);
   }
 
-  console.log(array);
+  return array;
 }
 
 sortingNumbers([1, 65, 3, 52, 48, 63, 31, -3, 18, 56]);
