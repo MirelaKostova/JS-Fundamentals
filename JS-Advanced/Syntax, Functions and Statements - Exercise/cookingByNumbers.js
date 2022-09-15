@@ -1,9 +1,8 @@
-function cookingByNumbers(...params) {
-  let operations = [...params];
-  let result = Number(operations.shift());
+function cookingByNumbers(result, ...params) {
+  result = Number(result);
 
-  for (const el of operations) {
-    switch (el) {
+  for (const action of [...params]) {
+    switch (action) {
       case "chop":
         result /= 2;
         break;
