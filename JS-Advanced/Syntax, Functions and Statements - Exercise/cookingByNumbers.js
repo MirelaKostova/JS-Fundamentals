@@ -1,7 +1,11 @@
 function cookingByNumbers(result, ...params) {
   result = Number(result);
 
-  for (const action of [...params]) {
+  for (const action of params) {
+    manipulator(action);
+  }
+
+  function manipulator(action) {
     switch (action) {
       case "chop":
         result /= 2;
@@ -23,7 +27,6 @@ function cookingByNumbers(result, ...params) {
         result -= result * 0.2;
         break;
     }
-
     console.log(result);
   }
 }
