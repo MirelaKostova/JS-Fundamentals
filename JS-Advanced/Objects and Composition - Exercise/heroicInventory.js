@@ -20,15 +20,15 @@ console.log(
   heroicInventory(["Isacc", "Derek", "Hes / 1 / Desolator, Sentinel, Antara"])
 );
 
-// console.log(
-//     heroicInventory([
-//       "Isacc / 25 / Apple, GravityGun",
+console.log(
+  heroicInventory([
+    "Isacc / 25 / Apple, GravityGun",
 
-//       "Derek / 12 / BarrelVest, DestructionSword",
+    "Derek / 12 / BarrelVest, DestructionSword",
 
-//       "Hes / 1 / Desolator, Sentinel, Antara",
-//     ])
-//   );
+    "Hes / 1 / Desolator, Sentinel, Antara",
+  ])
+);
 
 // Output:
 // [
