@@ -3,9 +3,7 @@ function extractText(text) {
   const textArea = document.querySelector("#result");
 
   //   console.log("textArea:", textArea);
-
   for (let currItem of items) {
-    //   textArea.value += currItem.textContent;
     // console.log(currItem.textContent);
     textArea.value += currItem.textContent + "\n";
   }
