@@ -3,33 +3,38 @@ function solve() {
 
   function onClick() {
     const inputData = JSON.parse(
-      document.getElementsByTagName("textarea")[0].value
+      document.querySelector("div#inputs textarea").value
     );
+    const bestRestorantInput = document.getElementsByTagName("p")[0];
+    const workersInput = document.getElementsByTagName("p")[1];
+    bestRestorantInput.textContent = "";
+    workersInput.textContent = "";
 
     let restaurants = {};
+    let index = 0;
 
     for (const data of inputData) {
       const [restaurantName, workers] = data.split(" - ");
-      // console.log("workers ->", workers);
-
-      if (!restaurants.hasOwnProperty(restaurantName)) {
-        restaurants[restaurantName] = {
-          name: restaurantName,
-          workers: [],
-          salaries: [],
-          avgSalary: 0,
-          bestSalary: 0,
-        };
-      }
-
       let workersData = workers.split(", ");
-      for (let worker of workersData) {
-        let [name, salary] = worker && worker?.split(" ");
 
+      workersData.forEach((worker) => {
+        let [name, salary] = worker.split(" ");
         salary = Number(salary);
-        restaurants[restaurantName].salaries.push(salary);
+
+        if (!restaurants.hasOwnProperty(restaurantName)) {
+          restaurants[restaurantName] = {
+            name: restaurantName,
+            workers: [],
+            salaries: [],
+            avgSalary: 0,
+            bestSalary: 0,
+            index: index,
+          };
+        }
+
         restaurants[restaurantName].workers.push({ name, salary });
-      }
+        restaurants[restaurantName].salaries.push(salary);
+      });
 
       restaurants[restaurantName].avgSalary = getAvgSalary(
         restaurants[restaurantName].salaries
@@ -37,39 +42,48 @@ function solve() {
       restaurants[restaurantName].bestSalary = getBestSalary(
         restaurants[restaurantName].salaries
       );
-    }
-    //  console.log("restaurants ->", restaurants);
-    let bestRestaurant = 0;
-    for (let restaurant of Object.entries(restaurants)) {
-      if (restaurant.avgSalary > bestRestaurant.avgSalary) {
-        bestRestaurant = restaurant;
-      }
+
+      index++;
     }
 
-    let result = getBestRestaurant(restaurants);
-    console.log("result ->", result);
-    //   console.log(
-    //     `Name: ${
-    //       bestRestaurant.name
-    //     } Average Salary: $${bestRestaurant.avgSalary.toFixed(
-    //       2
-    //     )} Best Salary: ${bestRestaurant.bestSalary.toFixed(2)}`
-    //   );
-  }
+    // get the best restaurant
+    let bestRestaurant = getBestRestaurant(restaurants);
+    console.log("bestRestaurant ->", bestRestaurant);
 
-  function getBestRestaurant(restaurants) {
-    let ad = Object.entries(restaurants).sort(
-      (a, b) => b.avgSalary - a.avgSalary
+    // print the result
+    bestRestorantInput.textContent = `Name: ${
+      bestRestaurant[0]
+    } Average Salary: ${bestRestaurant[1].avgSalary.toFixed(
+      2
+    )} Best Salary: ${bestRestaurant[1].bestSalary.toFixed(2)}`;
+
+    // print the result - workers
+    const sortedBySalaries = bestRestaurant[1].workers.sort(
+      (a, b) => b[1] - a[1]
     );
-    console.log(Object.entries(restaurants));
+    sortedBySalaries.forEach((worker) => {
+      worker;
+      let { name, salary } = worker;
+      workersInput.textContent += `Name: ${name} With Salary: ${salary} `;
+    });
   }
 
+  // the best restaurant
+  function getBestRestaurant(restaurants) {
+    return Object.entries(restaurants)
+      .sort(
+        (a, b) => b[1].avgSalary - a[1].avgSalary || b[1].index - a[1].index
+      )
+      .shift();
+  }
+
+  // calculate the best salary
   function getBestSalary(salary) {
     return salary.reduce((a, b) => Math.max(a, b));
   }
 
+  // calculate the avarage salary
   function getAvgSalary(salary) {
-    //  console.log("salary->", salary);
     return salary.reduce((a, b) => a + b / salary.length, 0);
   }
 }
