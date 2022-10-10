@@ -11,7 +11,7 @@ function encodeAndDecodeMessages() {
 
   function encode(e) {
     // console.log("textAreaEncode.value ->", textAreaEncode);
-    // console.log("textAreaDecode ->", textAreaDecode.value);
+    // console.log("textAreaDecode ->", textAreaDecode);
     decodedMessage = textAreaEncode.value;
     let encodedMsg = "";
     for (let i = 0; i < decodedMessage.length; i++) {
