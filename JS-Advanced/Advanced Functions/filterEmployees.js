@@ -2,21 +2,13 @@ function filterEmployees(JSONinput, criteriaData) {
   const parsedInput = JSON.parse(JSONinput);
   const [criteria, value] = criteriaData.split("-");
 
-  if (criteriaData !== "all") {
-    parsedInput
-      .filter((x) => x[criteria] == value)
-      .map((currEmployee, i) => {
-        console.log(
-          `${i}. ${currEmployee.first_name} ${currEmployee.last_name} - ${currEmployee.email}`
-        );
-      });
-  } else {
-    parsedInput.map((currEmployee, i) => {
+  parsedInput
+    .filter((x) => x[criteria] == value)
+    .map((currEmployee, i) => {
       console.log(
         `${i}. ${currEmployee.first_name} ${currEmployee.last_name} - ${currEmployee.email}`
       );
     });
-  }
 }
 
 filterEmployees(
@@ -40,5 +32,28 @@ filterEmployees(
     "email": "emaldin2@hostgator.com",
     "gender": "Male"
   }]`,
-  "all"
+  "gender-Female"
 );
+
+/*
+function filterEmployees(JSONinput, criteriaData) {
+    const parsedInput = JSON.parse(JSONinput);
+    const [criteria, value] = criteriaData.split("-");
+  
+    if (criteriaData !== "all") {
+      parsedInput
+        .filter((x) => x[criteria] == value)
+        .map((currEmployee, i) => {
+          console.log(
+            `${i}. ${currEmployee.first_name} ${currEmployee.last_name} - ${currEmployee.email}`
+          );
+        });
+    } else {
+      parsedInput.map((currEmployee, i) => {
+        console.log(
+          `${i}. ${currEmployee.first_name} ${currEmployee.last_name} - ${currEmployee.email}`
+        );
+      });
+    }
+  }
+*/
